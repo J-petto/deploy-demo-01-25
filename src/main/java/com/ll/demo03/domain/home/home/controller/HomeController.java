@@ -15,7 +15,7 @@ public class HomeController {
     @GetMapping("/")
     @ResponseBody
     public String showMain() {
-        return "retry to " + siteName;
+        return "reretry to " + siteName;
     }
 
     @GetMapping("/secretKey")
