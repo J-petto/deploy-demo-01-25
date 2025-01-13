@@ -1,3 +1,25 @@
+#!/usr/bin/env python3
+
+import os
+import requests  # HTTP 요청을 위한 모듈 추가
+import subprocess
+import time
+from typing import Dict, Optional
+
+
+class ServiceManager:
+    # 초기화 함수
+    def __init__(self, socat_port: int = 8081, sleep_duration: int = 3) -> None:
+        self.socat_port: int = socat_port
+        self.sleep_duration: int = sleep_duration
+        self.services: Dict[str, int] = {
+            'blog_1': 8082,
+            'blog_2': 8083
+        }
+        self.current_name: Optional[str] = None
+        self.current_port: Optional[int] = None
+        self.next_name: Optional[str] = None
+        self.next_port: Optional[int] = None
 
     # 현재 실행 중인 서비스를 찾는 함수
     def _find_current_service(self) -> None:
